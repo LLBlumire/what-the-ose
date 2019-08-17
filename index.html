@@ -13,7 +13,7 @@
   <div id="app">
     <div id="sources">
       <div class="source" v-for="(show, source) in showSources" :class="{active:show}">
-        <input type="checkbox" v-model="showSources[source]" @change="updateLists()">{{source}}
+        <input type="checkbox" v-model="showSources[source]" @change="updateLists()">{{source}} [{{sourceTags[source]}}]
       </div>
     </div>
     <div id="stats">
@@ -28,23 +28,23 @@
     <div id="suggestions">
       <h1 v-if="addten.length !== 0">+10% Prime Requisite</h1>
       <div class="suggestion-list">
-        <div class="suggestion" v-for="clazz in addten">{{clazz.name}} ({{clazz.source}})</div>
+        <div class="suggestion" v-for="clazz in addten">{{clazz.name}} [{{sourceTags[clazz.source]}}]</div>
       </div>
       <h1 v-if="addfive.length !== 0">+5% Prime Requisite</h1>
       <div class="suggestion-list">
-        <div class="suggestion" v-for="clazz in addfive">{{clazz.name}} ({{clazz.source}})</div>
+        <div class="suggestion" v-for="clazz in addfive">{{clazz.name}} [{{sourceTags[clazz.source]}}]</div>
       </div>
       <h1 v-if="neutral.length !== 0">+0% Prime Requisite</h1>
       <div class="suggestion-list">
-        <div class="suggestion" v-for="clazz in neutral">{{clazz.name}} ({{clazz.source}})</div>
+        <div class="suggestion" v-for="clazz in neutral">{{clazz.name}} [{{sourceTags[clazz.source]}}]</div>
       </div>
       <h1 v-if="subten.length !== 0">-10% Prime Requisite</h1>
       <div class="suggestion-list">
-        <div class="suggestion" v-for="clazz in subten">{{clazz.name}} ({{clazz.source}})</div>
+        <div class="suggestion" v-for="clazz in subten">{{clazz.name}} [{{sourceTags[clazz.source]}}]</div>
       </div>
       <h1 v-if="subtwenty.length !== 0">-20% Prime Requisite</h1>
       <div class="suggestion-list">
-        <div class="suggestion" v-for="clazz in subtwenty">{{clazz.name}} ({{clazz.source}})</div>
+        <div class="suggestion" v-for="clazz in subtwenty">{{clazz.name}} [{{sourceTags[clazz.source]}}]</div>
       </div>
       <h1 v-if="unplayable.length !== 0">Unplayable</h1>
       <div class="suggestion-list">

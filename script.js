@@ -70,6 +70,7 @@ var app = new Vue({
     subtwenty: [],
     unplayable: [],
     showSources: {},
+    sourceTags: {},
   },
   methods: {
     updateLists: function() {
@@ -128,6 +129,7 @@ var app = new Vue({
     let sources = new Set(StatThresholds.map((v) => v.source));
     for (let source of sources) {
       this.showSources[source] = false;
+      this.sourceTags[source] = source.match(/[^a-z ]/g).join("");
     }
     this.showSources["Classic Fantasy Genre Rules"] = true;
     this.updateLists();
