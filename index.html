@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="data.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <div id="sources">
+      <div class="source" v-for="(show, source) in showSources" :class="{active:show}">
+        <input type="checkbox" v-model="showSources[source]" @change="updateLists()">{{source}}
+      </div>
+    </div>
+    <div id="stats">
+      <div class="stat">STR<input type="number" v-model="stats.str" min=3 max=18></div>
+      <div class="stat">INT<input type="number" v-model="stats.int" min=3 max=18></div>
+      <div class="stat">WIS<input type="number" v-model="stats.wis" min=3 max=18></div>
+      <div class="stat">DEX<input type="number" v-model="stats.dex" min=3 max=18></div>
+      <div class="stat">CON<input type="number" v-model="stats.con" min=3 max=18></div>
+      <div class="stat">CHA<input type="number" v-model="stats.cha" min=3 max=18></div>
+    </div>
+    
+    <div id="suggestions">
+      <h1 v-if="addten.length !== 0">+10% Prime Requisite</h1>
+      <div class="suggestion-list">
+        <div class="suggestion" v-for="clazz in addten">{{clazz.name}} ({{clazz.source}})</div>
+      </div>
+      <h1 v-if="addfive.length !== 0">+5% Prime Requisite</h1>
+      <div class="suggestion-list">
+        <div class="suggestion" v-for="clazz in addfive">{{clazz.name}} ({{clazz.source}})</div>
+      </div>
+      <h1 v-if="neutral.length !== 0">+0% Prime Requisite</h1>
+      <div class="suggestion-list">
+        <div class="suggestion" v-for="clazz in neutral">{{clazz.name}} ({{clazz.source}})</div>
+      </div>
+      <h1 v-if="subten.length !== 0">-10% Prime Requisite</h1>
+      <div class="suggestion-list">
+        <div class="suggestion" v-for="clazz in subten">{{clazz.name}} ({{clazz.source}})</div>
+      </div>
+      <h1 v-if="subtwenty.length !== 0">-20% Prime Requisite</h1>
+      <div class="suggestion-list">
+        <div class="suggestion" v-for="clazz in subtwenty">{{clazz.name}} ({{clazz.source}})</div>
+      </div>
+      <h1 v-if="unplayable.length !== 0">Unplayable</h1>
+      <div class="suggestion-list">
+        <div class="suggestion" v-for="clazz in unplayable">{{clazz.name}} ({{clazz.source}})</div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
