@@ -1,4 +1,4 @@
-function canExceedPermutation(match, rawstats, immovable=[], mods={}) {
+function canExceedPermutation(match, rawstats, immovable=[], mods={}, primes=[]) {
   let stats = JSON.parse(JSON.stringify(rawstats));
   
   for (let attribute in mods) {
@@ -28,26 +28,41 @@ function canExceedPermutation(match, rawstats, immovable=[], mods={}) {
           }
         }
       } else {
-        borrowed += (match[stat] - stats[stat]) * 2;
+        if (primes.includes(stat)) {
+          borrowed += (match[stat] - stats[stat]) * 2;
+        } else {
+          return false;
+        }
       }
     } else {
       available += maxPull[stat];
     }
+    return true;
   };
-  adjStat("str");
-  adjStat("int");
-  adjStat("wis");
   
   let bumpStat = (stat) => {
     if (match[stat] !== undefined) {
       if (stats[stat] < match[stat]) {
-        borrowed += (match[stat] - stats[stat]) * 2;
+        if (primes.includes(stat)) {
+          borrowed += (match[stat] - stats[stat]) * 2;
+        } else {
+          return false;
+        }
       }
     }
+    return true;
+  };
+
+  if (!(
+    adjStat("str") & 
+    adjStat("int") &
+    adjStat("wis") &
+    bumpStat("dex") &
+    bumpStat("con") &
+    bumpStat("cha")
+  )) {
+    return false;
   }
-  bumpStat("dex");
-  bumpStat("con");
-  bumpStat("cha");
 
   return borrowed <= available;
 }
@@ -93,25 +108,25 @@ var app = new Vue({
         if (clazz.mods !== undefined) {
           mods = clazz.mods;
         }
-        if (canExceedPermutation(clazz.thresholds.addten, this.stats, immovable, mods)) {
+        if (canExceedPermutation(clazz.thresholds.addten, this.stats, immovable, mods, clazz.primes)) {
           this.addten.push(clazz);
         } else if (
           clazz.thresholds.altten !== undefined &&
-          canExceedPermutation(clazz.thresholds.altten, this.stats, immovable, mods)
+          canExceedPermutation(clazz.thresholds.altten, this.stats, immovable, mods, clazz.primes)
         ) {
           this.addten.push(clazz);
-        } else if (canExceedPermutation(clazz.thresholds.addfive, this.stats, immovable, mods)) {
+        } else if (canExceedPermutation(clazz.thresholds.addfive, this.stats, immovable, mods, clazz.primes)) {
           this.addfive.push(clazz);
         } else if (
           clazz.thresholds.altfive !== undefined && 
-          canExceedPermutation(clazz.thresholds.altfive, this.stats, immovable, mods)
+          canExceedPermutation(clazz.thresholds.altfive, this.stats, immovable, mods, clazz.primes)
         ) {
           this.addfive.push(clazz);
-        } else if (canExceedPermutation(clazz.thresholds.neutral, this.stats, immovable, mods)) {
+        } else if (canExceedPermutation(clazz.thresholds.neutral, this.stats, immovable, mods, clazz.primes)) {
           this.neutral.push(clazz);
-        } else if (canExceedPermutation(clazz.thresholds.subten, this.stats, immovable, mods)) {
+        } else if (canExceedPermutation(clazz.thresholds.subten, this.stats, immovable, mods, clazz.primes)) {
           this.subten.push(clazz);
-        } else if (canExceedPermutation(clazz.thresholds.playable, this.stats, immovable, mods)) {
+        } else if (canExceedPermutation(clazz.thresholds.playable, this.stats, immovable, mods, clazz.primes)) {
           this.subtwenty.push(clazz);
         } else {
           this.unplayable.push(clazz);

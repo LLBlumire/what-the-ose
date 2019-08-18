@@ -1,6 +1,7 @@
 const Cleric = {
   name: "Cleric",
   source: "Classic Fantasy Genre Rules",
+  primes: ["wis"],
   thresholds: {
     playable: {},
     subten: {wis: 6},
@@ -13,6 +14,7 @@ const Cleric = {
 const Dwarf = {
   name: "Dwarf",
   source: "Classic Fantasy Genre Rules",
+  primes: ["str"],
   thresholds: {
     playable: { con: 9 },
     subten: {con: 9, str: 6},
@@ -25,6 +27,7 @@ const Dwarf = {
 const Elf = {
   name: "Elf",
   source: "Classic Fantasy Genre Rules",
+  primes: ["int", "str"],
   thresholds: {
     playable: {int: 9},
     subten: {int: 9},
@@ -37,6 +40,7 @@ const Elf = {
 const Fighter = {
   name: "Fighter",
   source: "Classic Fantasy Genre Rules",
+  primes: ["str"],
   thresholds: {
     playable: {},
     subten: {str: 6},
@@ -49,6 +53,7 @@ const Fighter = {
 const Halfling = {
   name: "Halfling",
   source: "Classic Fantasy Genre Rules",
+  prime: ["dex", "str"],
   thresholds: {
     playable: {con: 9, dex: 9},
     subten: {con: 9, dex: 9},
@@ -62,6 +67,7 @@ const Halfling = {
 const MagicUser = {
   name: "Magic-User",
   source: "Classic Fantasy Genre Rules",
+  primes: ["int"],
   thresholds: {
     playable: {},
     subten: {int: 6},
@@ -74,6 +80,7 @@ const MagicUser = {
 const Thief = {
   name: "Thief",
   source: "Classic Fantasy Genre Rules",
+  primes: ["dex"],
   thresholds: {
     playable: {},
     subten: {dex: 6},
@@ -87,6 +94,7 @@ const Thief = {
 const Acrobat = {
   name: "Acrobat",
   source: "Advanced Fantasy Genre Rules",
+  primes: ["dex"],
   thresholds: {
     playable: {},
     subten: {dex: 6},
@@ -100,6 +108,7 @@ const Acrobat = {
 const Assassin = {
   name: "Assassin",
   source: "Advanced Fantasy Genre Rules",
+  primes: ["dex"],
   thresholds: {
     playable: {},
     subten: {dex: 6},
@@ -113,6 +122,7 @@ const Assassin = {
 const Barbarian = {
   name: "Barbarian",
   source: "Advanced Fantasy Genre Rules",
+  primes: ["con", "str"],
   thresholds: {
     playable: {dex: 9},
     subten: {dex: 9},
@@ -126,6 +136,7 @@ const Barbarian = {
 const Bard = {
   name: "Bard",
   source: "Advanced Fantasy Genre Rules",
+  primes: ["cha"],
   thresholds: {
     playable: {dex: 9, int: 9},
     subten: {dex: 9, int: 9, cha: 6},
@@ -138,6 +149,7 @@ const Bard = {
 const Drow = {
   name: "Drow",
   source: "Advanced Fantasy Genre Rules",
+  primes: ["str", "wis"],
   thresholds: {
     playable: {int: 9},
     subten: {int: 9},
@@ -150,6 +162,7 @@ const Drow = {
 const Druid = {
   name: "Druid",
   source: "Advanced Fantasy Genre Rules",
+  primes: ["wis"],
   thresholds: {
     playable: {},
     subten: {wis: 6},
@@ -162,6 +175,7 @@ const Druid = {
 const Duergar = {
   name: "Duergar",
   source: "Advanced Fantasy Genre Rules",
+  primes: ["str"],
   thresholds: {
     playable: {con: 9, int: 9},
     subten: {con: 9, int: 9, str: 6},
@@ -174,6 +188,7 @@ const Duergar = {
 const Gnome = {
   name: "Gnome",
   source: "Advanced Fantasy Genre Rules",
+  primes: ["dex", "int"],
   thresholds: {
     playable: {con: 9},
     subten: {con: 9},
@@ -186,6 +201,7 @@ const Gnome = {
 const HalfElf = {
   name: "Half-Elf",
   source: "Advanced Fantasy Genre Rules",
+  primes: ["int", "str"],
   thresholds: {
     playable: {cha: 9, con: 9},
     subten: {cha: 9, con: 9},
@@ -199,6 +215,7 @@ const HalfElf = {
 const HalfOrc = {
   name: "Half-Orc",
   source: "Advanced Fantasy Genre Rules",
+  primes: ["dex", "str"],
   thresholds: {
     playable: {},
     subten: {},
@@ -211,6 +228,7 @@ const HalfOrc = {
 const Illusionist = {
   name: "Illusionist",
   source: "Advanced Fantasy Genre Rules",
+  primes: ["int"],
   thresholds: {
     playable: {dex: 9},
     subten: {dex: 9, int: 6},
@@ -223,6 +241,7 @@ const Illusionist = {
 const Knight = {
   name: "Knight",
   source: "Advanced Fantasy Genre Rules",
+  primes: ["str"],
   thresholds: {
     playable: {con: 9, dex: 9},
     subten: {con: 9, dex: 9, str: 6},
@@ -235,6 +254,7 @@ const Knight = {
 const Paladin = {
   name: "Paladin",
   source: "Advanced Fantasy Genre Rules",
+  primes: ["str", "wis"],
   thresholds: {
     playable: {cha: 9},
     subten: {cha: 9},
@@ -248,6 +268,7 @@ const Paladin = {
 const Ranger = {
   name: "Ranger",
   source: "Advanced Fantasy Genre Rules",
+  primes: ["str"],
   thresholds: {
     playable: {con: 9, wis: 9},
     subten: {con: 9, wis: 9, str: 6},
@@ -260,6 +281,7 @@ const Ranger = {
 const Svirfneblin = {
   name: "Svirfneblin",
   source: "Advanced Fantasy Genre Rules",
+  primes: ["dex", "int"],
   thresholds: {
     playable: {con: 9},
     subten: {con: 9},
@@ -363,7 +385,7 @@ const RDrow = {
 
 const RDuergar = {
   name: "Duergar",
-  playable: {con: 9},
+  playable: {con: 9, int: 9},
   mods: {cha: -1, con: 1}
 };
 [Assassin, Cleric, Fighter, Thief].map((cc) => addRaceClass(RDuergar, cc));
@@ -393,7 +415,7 @@ const RGnome = {
 
 const RHalfElf = {
   name: "Half-Elf",
-  playable: {},
+  playable: {cha: 9, con: 9},
   mods: {},
 };
 [Acrobat, Assassin, Bard, Cleric, Druid, Fighter, Knight, Paladin, Ranger, 
@@ -408,7 +430,7 @@ const RHalfling = {
 
 const RHalfOrc = {
   name: "Half-Orc",
-  playable: {con: 9, str: 9},
+  playable: {},
   mods: {cha: -1, con: +1, str: +1},
 };
 [Acrobat, Assassin, Cleric, Fighter, 
@@ -416,7 +438,7 @@ const RHalfOrc = {
 
 const RSvirfneblin = {
   name: "Svirfneblin",
-  playable: {con: 9, int: 9},
+  playable: {con: 9},
   mods: {}
 };
 [Assassin, Cleric, Fighter, Illusionist, 
