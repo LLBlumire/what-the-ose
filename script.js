@@ -20,10 +20,10 @@ function canExceedPermutation(match, rawstats, immovable=[], mods={}, primes=[])
   let borrowed = 0;
   let adjStat = (stat) => {
     if (match[stat] !== undefined) {
-      if (stats[stat] > match[stat]) {
+      if (stats[stat] >= match[stat]) {
         if (match[stat] >= 9) {
           let diff = stats[stat] - match[stat];
-          if (diff <= maxPull) {
+          if (diff <= maxPull[stat]) {
             available += diff;
           }
         }

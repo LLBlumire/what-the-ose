@@ -370,7 +370,8 @@ function addRaceClass(
     name: name,
     source: source,
     thresholds: thresholds,
-    mods: race.mods
+    mods: race.mods,
+    primes: clazz.primes
   })
 }
 
